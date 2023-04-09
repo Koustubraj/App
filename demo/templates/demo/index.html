@@ -1,0 +1,14 @@
+{%extends 'demo/base.html'%}
+
+{% block heading %}
+    Main Menu
+{% endblock %}
+
+{% block body %}
+<ul>
+    <li><a href="{% url 'greet_page' %}">Greetings Program</a></li>
+    <li><a href="{% url 'login_page' %}">Login Program</a></li>
+    <li><a href="{% url 'login2_page' %}">Another Login Program</a></li>
+</ul>
+    
+{% endblock %}

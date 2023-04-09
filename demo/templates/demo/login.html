@@ -1,0 +1,33 @@
+{% extends 'demo/base.html '%}
+
+{% block title%} 
+    Login
+{% endblock %}
+
+{% block heading%}
+
+Login Here
+
+{% endblock %}
+
+
+{% block body%} 
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="email" name="user_email" placeholder="Enter EMail" required /> <br><br>
+        <input type="password" name="user_pwd" placeholder="Enter Password" required /> <br><br>
+        <input type="submit" value="Login Here" /> <br><br>
+    </form>
+
+
+    {% if msg %}
+        {{msg}}
+    {% endif %}
+
+
+    <br><br>
+    <hr>
+    <a href="{% url 'index_page'%}">Back</a>
+
+{% endblock %}

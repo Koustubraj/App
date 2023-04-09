@@ -1,0 +1,39 @@
+{%extends 'demo/base.html'%}
+
+{% block title %}
+    Greeting Program
+{% endblock %}
+
+{% block heading %}
+    Greeting Program
+{% endblock %}
+
+{% block body %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Enter user name" required /> <br><br>
+        <input type="submit" value="Greet"/>
+    </form>
+
+    <br><br>
+
+    {% if name %}
+        <h3>Hello, <font color = 'blue'>{{name | capfirst }}</font></h3>
+    {% endif %}
+    
+    
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}    
+               <!-- <p style="color: green">{{message}}</p> --> 
+               <script> swal("Login!", "Welcome!", "success"); </script>
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <p style="color: red">{{message}}</p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <br><br>
+    <hr>
+    <a href="{% url 'index_page'%}">Back</a>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'demo/base.html '%}
+
+{% block title%} 
+    Another Login
+{% endblock %}
+
+{% block heading%}
+
+Another type of Login Here
+
+{% endblock %}
+
+
+{% block body%} 
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="email" name="user_email" placeholder="Enter EMail" required /> <br><br>
+        <input type="password" name="user_pwd" placeholder="Enter Password" required /> <br><br>
+        <input type="submit" value="Login Here" /> <br><br>
+    </form>
+
+
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}    
+                <p style="color: green">{{message}}</p>
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+               <!-- <p style="color: red">{{message}}</p> --> 
+               <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Error</strong> Wrong Credentials
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <br><br>
+    <hr>
+    <a href="{% url 'index_page'%}">Back</a>
+{% endblock %}
